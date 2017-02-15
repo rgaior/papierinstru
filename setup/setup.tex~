@@ -1,0 +1,265 @@
+\section{EASIER}
+The  EASIER experiment  is one  of the  three C-band  (3.4 -  4.2 GHz)
+experiments  deployed in  the  Pierre Auger  Observatory site  besides
+AMBER~\cite{gorham} and MIDAS~\cite{midas}. The latter detectors share
+the concept of radio-fluorescence detectors, instrumenting an array of
+feed  horn antennas  at the  focus of  a parabolic  dish. Just  as the
+fluorescence   detectors,  they  aim   at  imaging   the  longitudinal
+development  of the  showers. EASIER  is  an alternative  design ;  as
+individual  antennas are  embedded  in the  surface  detectors of  the
+Pierre Auger Observatory. The concept relies on the observation of the
+shower  from the  ground with  a wide  angle antenna  pointing  to the
+zenith.  While  EASIER-61  is  successfully running  since  2011,  new
+estimations of the expected intensity  led us to implement a new array
+with an enhanced sensitivity. Both of the arrays are presented in this
+section.
+ 
+\subsection {The noise environment in the Pierre Auger Observatory site}
+Prior to  the installation, measurements  of the surrounding  noise in
+the C-band  revealed no  transient or steady  noise source  that could
+pollute the antennas receptivity to  a radio emission in the microwave
+band.  The noise  spectrum measured  with  a C-band  antenna in  Pampa
+Amarilla is  shown in figure~\ref{fig:Pampa_spec}.  No transient noise
+was found in the frequency band of interest (3.4- 4.2 GHz).
+ \begin{figure}[!h]
+  \center {
+  \includegraphics[width=0.5\linewidth]{Pampa_spec} 
+  \caption{\small{Frequency spectrum in the C-band recorded in Pampa Amarilla.}}
+  \label{fig:Pampa_spec}
+    } 
+\end{figure}
+
+
+\subsection{The experimental setup}  
+The  Pierre Auger  Observatory surface  detector is  composed  of 1660
+local stations arranged  in a tringular grid of  1500m spacement. Each
+local station is a water  Cherenkov detector equipped with three PMTs,
+a       local        acquisition       and       a       communication
+system~\cite{augerdetector}. An EASIER detector unit is designed to be
+integrated  into the  SD station  and  measure the  emission from  air
+shower in the microwave frequency range.  \\ The radio detector itself
+is composed of an antenna  and an amplification system, it is combined
+with an adaptation electronics to convert the RF signal into a voltage
+proportional to  the RF power envelope  as shown on  the schematics on
+the fig.~\ref{fig:diagram}.  It is then  adapted to fit into the local
+station front end electronics since EASIER signal replace one low gain
+channel of  one PMT  (each local station  acquires ordinarly  the last
+dynode and the anode of three  PMTs, the anode being used only in case
+of saturation of the dynode).   As a consequence, no separated trigger
+for the radio signal is needed, the EASIER data are simply part of the
+regular SD data stream.  As  an additional benefit, the radio detector
+is  powered by the  station battery  and is  also integrated  into the
+SD station's monitoring  system.
+\begin{figure}[!ht]
+  \centering
+  \hspace*{-3ex}  
+  \subfigure{\includegraphics[width=0.69\linewidth]{blockdiagram.pdf}}  
+  \caption{block diagram of an EASIER detector unit}
+  \label{fig:diagram}  
+\end{figure}
+
+%% MBR is emitted by the  low energy ionization electrons
+%% and its intensity depends on the deposited energy by the shower front,
+%% thus the expected  radio signal time profile would  contain the shower
+%% development    information    as    represented   schmematically    on
+%% fig.~\ref{fig:expectedsignal}.
+%% The  radio   waveform  is  recorded   together  with  the   usual  PMT
+%% information, that  is to say whenever  a coincidence on  PMT signal of
+%% three adjacent SD stations  is established.  EASIER takes advantage of
+%% the  facilities of  Auger  surface detector  in  particular the  power
+%% supply  and the  communication system.   A typical  EASIER  station is
+%% shown in  fig.~\ref{fig:detector} (left),  the antenna is  fixed above
+%% the SD and the EASIER electronics is placed in the SD electronics box.
+%% The  concept described above  was implemented  in the  C-band (3.4-4.2
+%% GHz)  in two different  versions, EASIER61  and GIGADuck.
+\subsubsection*{EASIER61}
+A first  array of  seven detectors was  installed at the  Pierre Auger
+Observatory  in April  2011.  The  good operation  and results  of the
+first test  bed led to an  extension of 54 more  detectors covering an
+instrumented surface  of \unit[91]{$\rm km^2$}.  The  antenna used for
+this setup  is a  commercial cylindrical horn  antenna with  a maximum
+gain of around 9dB, it points to  the zenith and has a half power beam
+width (HPBW)  of 90 degree. The  first seven LNBf are  the model GI301
+made by by Global Intersat and  the 54 units of the extension are from
+WSInternational, model DMX241. The sensor, composed of the antenna and
+the amplification system,  are installed on top of  the SD station (cf
+fig.~\ref{fig:detector} left) and the electronics box is located below
+the hatch  box on top  of the SD  electronics.  The EASIER61  array is
+located in  the south west part  of the Pierre  Auger Observatory, its
+footprint is  shown in fig.~\ref{fig:detector} (right).   On the total
+of  61   antennas,  33  have   a  North-South  polarization,   and  28
+East-West.\\ Several radio events in coincidence with an extensive air
+shower were measured  with EASIER61 but no conclusions  could be drawn
+on the physical mechanism at the origin of the signal.
+\begin{figure}[!ht]
+  \centering
+  \hspace*{-3ex}  
+  \subfigure{\includegraphics[width=0.49\linewidth]{setupGHznew.pdf}}
+  \subfigure{\includegraphics[width=0.49\linewidth]{augerarray.pdf}}  
+  \caption{Left: EASIER  detector installed on a  Pierre Auger surface
+    detector. Right: Footprint of EASIER array phase 1 (blue dots) and
+    phase 2 (green dots).}
+  \label{fig:detector}  
+\end{figure}
+
+\subsubsection*{GIGADuck}
+A recent calculation  of the MBR signal pointed  out that the expected
+signal should  be lower by at  least two orders of  magnitude than the
+first estimation presented in~\cite{Gorham}. This consideration led to
+the  design  and  the  installation  in March  2015  of  GIGADuck,  an
+optimized array  of seven detectors with  a higher gain  antenna and a
+different  geometry.   The 15dB  gain  antenna  increases the  antenna
+effective area by a factor six with respect to EASIER61.  Furthermore,
+the array is now composed of a central detector pointing to the zenith
+and the other surrounding six detectors points towards the central one
+with a zenith angle of 20$^\circ$  as represented on the scheme of the
+figure~\ref{fig:GD}.  This configuration  increases the overlap of the
+detectors' field of view and enhance the possible coincident detection
+in order  to disentangle between  a beamed and an  isotropic emission.
+The  optimized  tilt angle  was  found  as  a compromise  between  the
+coincidence  probability  and the  antenna  temperature increase  (the
+brightness temperature  of the sky  increases with the  zenith angle).
+To  assess  the performance  of  such  a  configuration, the  expected
+maximum power detected from a vertical  10 EeV shower as a function of
+the distance  for an EASIER-like  hexagon (all antennas  are vertical)
+and a GIGADuck-like  one (all inclined except the  central antenna) is
+shown on the figure~\ref{fig:GD} right.  While the expected amplitudes
+are similar at  short distances, the effect of  inclining the antennas
+is most visible at larger distances of the shower core.
+ 
+
+%% With  these changes,  the  sensitivity  is
+%% improved by a factor 10.  \textit{The number of expected events in one
+%%   hexagon of each setup is evaluated  for a range of MBR yields on the
+%%   fig.~\ref{fig:compeasiergd}.   For   a  yield  of   ??   one  expect
+%%   qapproximately 2 events per year per hexagon in the case of GIGADuck
+%%   whereas this number becomes negligible  in the case of an hexagon of
+%%   EASIER61.}\\
+\begin{figure}[!ht]
+  \centering
+  \hspace*{-3ex}  
+  \subfigure{\includegraphics[width=0.49\linewidth]{GD.pdf}}
+  \subfigure{\includegraphics[width=0.49\linewidth]{CBand_verticalVsInclined.eps}}
+  \caption{Left: Top  view of GIGADuck array  and side view  of one of
+    the detector.   Right: Maximum power  received from a  vertical 10
+    EeV shower as  a function of its core distance  from an antenna in
+    an EASIER-like configuration and a GIGADuck configuration.}
+  \label{fig:GD}  
+\end{figure}
+%% \begin{figure}[!ht]
+%%   \centering
+%%   \hspace*{-3ex}  
+%%   \subfigure{\includegraphics[width=0.49\linewidth]{compeasiergd.pdf}}
+%%   \caption{}
+%%   \label{fig:compeasiergd}  
+%% \end{figure}
+
+From the first  installed array in 2011 to the  latest in 2015 several
+improvements   were   brought    to   the   EASIER   detectors.    The
+table~\ref{tab:easiergd}  summarizes   the  main  characteristics  and
+figure~\ref{fig:easiertimes} the operation times for the two described
+arrays.
+
+
+\begin{table}[!h]
+\centering
+\caption{EASIER61 and GIGADuck detector main features}
+\label{tab:easiergd}
+\begin{tabular}{ |l|l|l| }
+\hline
+ & sensor & antenna orientation \\ \hline
+\multirow{3}{*}{EASIER} & LNBf: WSI DMX241/GI 301 & \multirow{3}{*}{$\rm \theta = 0 ^\circ $ } \\
+ & $\rm G_{max} = 9 dB$   &  \\
+ & $\rm HPBW = 90 ^\circ$ &  \\ \hline
+\multirow{3}{*}{GIGADuck} & LNBf: Norsat 8115  & $\rm \theta = 20 ^\circ $  \\
+ & $\rm G_{max} = 15 dB$   & ($\rm \theta = 0 ^\circ $ for the central detector) \\  
+ & $\rm HPBW = 30 ^\circ$  &  \\ \hline
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!ht]
+  \centering
+  \hspace*{-3ex}  
+  \subfigure{\includegraphics[width=0.50\linewidth]{easiertimes.png}}
+  \caption{Periods of operation of EASIER and GIGADuck.}
+  \label{fig:easiertimes}  
+\end{figure}
+
+
+%% \clearpage
+%% \subsection{Detector}
+%% \begin{figure}[!hb]
+%%   \centering
+%%   \hspace*{-3ex}  
+%%   \subfigure{\includegraphics[width=0.50\linewidth]{detectorscheme}}
+%%   \caption{Functional scheme of the  EASIER detector. Blue squares are
+%%     the EASIER elements whereas red  ones are Auger SD elements. Black
+%%     dashed lines  represent the  power supply lines  and the  red line
+%%     represent the radio signal line.}
+%%   \label{fig:detectorscheme}
+%% \end{figure}
+
+
+%% The receiver is commercial horn antenna (fig.~\ref{fig:detector}) made
+%% of a  feed and a  quarter wave length  monopole at its bottom.   It is
+%% tuned  for  a  central  frequency  of  3.8  GHz  and  a  bandwidth  of
+%% approximately 800GHz.  It  is associated with a low  noise block (LNB)
+%% which amplifies  the signal by approximately  \unit[60]{dB} and lowers
+%% down the  central frequency to  \unit[1.35]{GHz}.  
+%% %% This type  of feeds
+%% %% are  widely  used  for   TV  satellite  reception,  making  them  very
+%% %% affordable  and  of good  quality.   The  model  GI-301SC from  Golden
+%% %% Intestar was chosen for the  first phase whereas the second phase used
+%% %% a  different  model   with  the  same  design,  the   ESX241  from  WS
+%% %% international.  
+%% A bias  tee is  inserted to provide  the power  supply to the  LNB and
+%% operate   the   transmission   of   the   RF  signal   on   a   single
+%% \unit[75]{$\Omega$} line.  Depending on  the setup, the line impedance
+%% is adapted to \unit[50]{$\Omega$} by a resistor bridge.
+%% %% inducing a loss of  \unit[5.7]{dB}. 
+%% Potential low  frequency noises are filtered out  by a \unit[900]{MHz}
+%% high pass filter.  A logarithmic amplifier (minicircuit AD8318) serves
+%% as  a power  detector and  restitutes  a voltage  proportional to  the
+%% logarithm of the RF input power.   This model was chosen for its large
+%% frequency  bandwidth and  a fast  time response  of $\simeq$\unit[tens
+%%   of]{ns} nominally.
+%% %%   The time response
+%% %% was even  lowered down to  \unit[$\sim$10]{ns} for the phase  2. 
+%%  This voltage is  in turn adapted to fit into  the local station front
+%%  end, originally built to accept  PMT's negative voltage between 0 and
+%%  -2V.  The EASIER  final analogic signal replaces one  of the low gain
+%%  channel of  the local station (each local  station acquires ordinarly
+%%  the last  dynode and the  anode of three  PMTs, the anode  being used
+%%  only  in  case of  saturation  of the  dynode).   The  final part  of
+%%  acquisition includes an antialiasing filter cutting frequencies above
+%%  \unit[20]{MHz} and the FADC digitizer sampling a \unit[19.2]{$\mu$ s}
+%%  waveform at a  \unit[40]{MHz} rate and coding the  analogic signal on
+%%  10 bits~\cite{augertechnical}.   The data stream is then  sent to the
+%%  central acquisition and the  reconstruction of the event is performed
+%%  independently of the radio signal.
+
+
+%%    the The  integration to  the water  cherenkov tank
+%% with the  adjusted to  level to  Auger SD array  is composed  of water
+%% cherenkov  detector arranged in  tringular grid  and spaced  by 1.5km.
+%% Each local station  operates three PMTs and acquires  both a high gain
+%% channel (the PMT  last dynode) and a low gain  channel (the PMT anode)
+%% used in case of saturation of  the former.  EASIER operates as a slave
+%% detector added on the Auger local station.  Hence, EASIER is made of a
+%% sensor and a processing electronics; the power supply, the acquisition
+%% and the trigger being supplied  by the local station.  Since the Auger
+%% array   is   totally   efficient    for   a   primary   energy   above
+%% \unit[$3\cdot10^{18}$]{eV}, the  EASIER system allows us  to probe the
+%% emission of EAS at UHE.\\EASIER  aims at the detection and measurement
+%% of  the  electromagnetic  emission  from  the  air  shower  along  its
+%% development.  For this  purpose, it is first composed  by a wide field
+%% of view  antenna collecting the emitted  signal in the  C-band ([3.4 -
+%%   4.2] GHz), followed by a built-in low noise amplifier.  The HF power
+%% is then integrated over the full bandwidth by a logarithmic amplifier.
+%% The resulting voltage, proportional to the power in dBm, is adapted to
+%% fit into one  of the front end channel of the  Auger SD, replacing one
+%% of the low  gain channel.  The recorded radio signal  is a waveform of
+%% 1023 ADC counts  representing a dynamic range of  20dB, i.e.  a factor
+%% 100 in RF power, of 19.2 $\mu$ s length sampled at 40MHz.  The time of
+%% acquisition is set by the trigger supplied by the local station.

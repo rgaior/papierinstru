@@ -1,0 +1,501 @@
+\section{Detector calibration}
+EASIER detectors  are required to measure faint  and impulsive signal.
+A figure  of merit  of the  sensitivity used in  the field  is usually
+given by:
+\begin{equation}
+\rm  F  =  \frac{k_{B}\cdot  T_{sys} }{A_{eff}\cdot  \sqrt{\Delta  \nu
+    \Delta t}}
+\label{eq:sensitivity}  
+\end{equation}
+F  represents the  flux  from a  signal  that would  equate the  noise
+fluctuation.    This   equation    is   derived,   for   instance   in
+\cite{otoshidanslacolle},  for  a  sensor  followed by  a  square  law
+detector and  a low pass filter  of frequency $\rm  f_{cut} = 1/\Delta
+t$.   \\  In  eq.~\ref{eq:sensitivity}  $\rm T_{sys}$  is  the  system
+temperature, which is a measure  of the thermal noise collected by the
+antenna and the electronics noise  added mainly by the first amplifier
+(with $k_B$ is  the Boltzmann constant).  The square  root term is the
+amount of samples  over which this noise is  averaged.  In simple case
+it is the product of the  bandwidth $\Delta f$ with a time constant of
+a low pass filter.  In the  case of transient signal, it is meaningful
+to use the expected duration of the signal.  Finally, $\rm A_{eff}$ is
+the effective  area of the antenna  i.e.  the portion  of the incoming
+radio flux transformed into electrical power.
+\subsection{sensor calibration}
+%The   sensor,  the   antenna  and   the  LNB,   will   participate  in
+%eq.~\ref{eq:sensitivity}  in   most  of   the  term.
+\paragraph{antenna effective area}
+The effective area is found by simulation...
+%\paragraph{antenna temperature}
+%The system temperature makes use of the effective area...
+\paragraph{system temperature}
+The system  noise temperature $\rm  T_{sys}$ is a  critical parameters
+since the  sensitivity goes  linearly with  it. It is  the sum  of the
+antenna noise temperature ($ \rm  T_{ant}$) and the noise added by the
+electronics  stage ($ \rm  T_{elec}$) .  It is  related to  the system
+power $\rm P_{sys}$ through:
+\begin{equation}
+  \rm  P_{sys}  =  k_{B} T_{sys}  G  \Delta  \nu  = k_{B}  (T_{ant}  +
+  T_{elec}) G \Delta \nu
+\end{equation}
+with G the electronics gain.  Because the measurement of the gain with
+a high precision is to achieve, the main method to retrieve the system
+temperature  is to  combine two  measurements with  a  different input
+noise power -  or the equivalent temperature - to  cancel out the gain
+term.  The  system noise temperature  of EASIER and GIGAS's  LNBf were
+measured by  the CROME collaboration  comparing the output  power when
+the  antenna collects noise  from surrounding  material first  at room
+temperature       and        then       at       liquid       nitrogen
+temperature~\cite{bib:gapnoteCROME}.   The electronics  temperature of
+the GI 301 was  found to be very variable from 40  to 180K, the one of
+the WS  International stable  at 25K and  the Norsat at  23.5K.  MIDAS
+experiment  uses  also  the  LNBf  WSI DMX241  and  measured  a  noise
+temperature  of  25K~\cite{bib:midas}.   We  have  also  measured  the
+electronics noise temperature of  the WSI DMX241 comparing the spectra
+measured at room temperature in  laboratory when the antenna is facing
+an absorber ($\rm T_{room} = \unit[300]{K}$) with the measurement when
+the  antenna faces  the  sky ($T_{sky}  = \unit[7]{K}$).   \textit{The
+  results   we  obtain  for   amounts  to   around  $\rm   T_{elec}  =
+  \unit[40]{K}$.     The   difference   with    previously   mentioned
+  measurements can  be explained  by the radome  protection.}\\One can
+also use  the sun as a  calibration source since its  absolute flux is
+monitored by  other radio observatory.  The increase  of power induced
+upon the passage of the sun in the antenna field of view reads:
+\begin{equation}
+  \rm       \unit[\Delta      P]{[dBm]}       =       10      log_{10}
+  (\frac{P_{sys} + P_{sun}(\theta_{sun},\phi_{sun})  }{P_{sys}} )  = 10
+  log_{10}     (    1     +     \frac{    \frac{1}{2}F_{sun}     \cdot
+    A_{eff}(\theta_{sun},\phi_{sun}) } {T_{sys}} )
+  \label{eq:deltaP}
+\end{equation}
+%% \begin{equation}
+%%   \rm         \unit[P_{tot}(\theta_{sun},\phi_{sun})]{[dBm]}         -
+%%   \unit[P_{sys}]{[dBm]}            =            10            log_{10}
+%%   (\frac{P_{sun}(\theta_{sun},\phi_{sun})  + P_{sys}}{P_{sys}} )  = 10
+%%   log_{10}     (    1     +     \frac{    \frac{1}{2}F_{sun}     \cdot
+%%     A_{eff}(\theta_{sun},\phi_{sun}) } {T_{sys}} )
+%% \end{equation}
+where    $\rm   F_{sun}$    is    the   total    solar   flux,    $\rm
+A_{eff}(\theta_{sun},\phi_{sun}) $ is the antenna effective area for a
+given position of the sun in  the sky and the factor $\rm \frac{1}{2}$
+is  the polarization factor.   \\ This  calibration  technique is  better
+suited for the GIGADuck antennas than for EASIER ones because of their
+larger gain.  However, this measurement can be performed only when the
+sun is  in the field  of view of  the antenna. As  it is shown  in the
+figure~\ref{fig:sunsim} (left), the sun  is not visible by any antenna
+of the  GIGADuck array  during austral winter  but will cross  the FOV
+during summer.\\ We  retrieve the absolute value of  the daily average
+sun    flux   at   \unit[2.8]{GHz}    from   public    data   released
+at~\cite{sundata}.  The  flux at the  center frequency of  the C-band,
+\unit[3.8]{GHz},   is  obtained   by   using  parameterization   found
+in~\cite{sunparam, sunparam2}.
+
+
+\begin{figure}[!ht]
+ \centering
+ \hspace*{-3ex}
+ \subfigure{\includegraphics[width=0.49\linewidth]{sunpolar.png}}
+ \subfigure{\includegraphics[width=0.49\linewidth]{examplesunfit.png}}
+%% \subfigure{\includegraphics[width=0.49\linewidth]{sunexpected.png}}
+ \caption{Left: Sun transit for the two solstices. The colored circles
+   represent  the field  of  view of  the  GIGADuck antennas.   Right:
+   Example  of the  baseline during  one  day. In  blue is  the
+   orignal baseline when the mean is subtracted, in green after it was
+   corrected from temperature dependence and  in red is a gaussian fit
+   of to extract the signal from the sun.}
+%%    Simulated  baseline  increase for  three  antennas  during the  sun
+%%    passage.}
+ \label{fig:sunsim}
+\end{figure}
+Since  EASIER/GIGADuck is  part of  the SD  data stream  including the
+monitoring system, the radio  baseline is recorded every \unit[400]{s}
+with other  information such as  the outside temperature. In  order to
+extract the signal from the  sun, we first remove rainy periods, since
+rain and  high humidity  affect the radio  baseline in a  complex way.
+Then we correct for a linear  dependence of the system's gain with the
+outside temperature.  The remaining baseline shows a clear peak at the
+time the  sun is expected.  It is  fitted with a Gaussian  curve and a
+second order  polynomials and the height  of the Gaussian  can then be
+converted into the noise temperature of the system. An example of such
+a fit  is shown  in figure~\ref{fig:sunsim}. The  calibration function
+given    by    the    equation    ~\ref{eq:eqcalibration}    in    the
+section~\ref{sec:elec} allows us to  convert the measured variation in
+ADC counts to a variation  of power.  The noise temperature is finally
+deduced with equation~\ref{eq:deltaP}.  This  method is used to obtain
+an insitu measurement of the  noise temperature and to monitor it with
+time.  The results are given in table(results to produce)
+%% \begin{figure}[!ht]
+%%  \centering
+%%  \hspace*{-3ex}
+%%  \subfigure{\includegraphics[width=0.49\linewidth]{examplesunfit.png}}
+%%  \caption{Example  of the  baseline during  one  day. In  blue is  the
+%%    orignal baseline when the mean is subtracted, in green after it was
+%%    corrected from temperature dependence and  in red is a gaussian fit
+%%    of to extract the signal from the sun.}
+%%  \label{fig:sunfit}
+%% \end{figure}
+
+
+\paragraph{sensor bandwidth}
+The absolute gain  of the RF part (amplifier  combined with the losses
+along  the  signal path)  does  not  enter  directly in  the  detector
+sensitivity,     but    the     frequency    bandwidth     does    (cf
+eq.~\ref{eq:sensitivity}).  The  normalized gain  of the LNB  used for
+EASIER61 (GI301, DMX241) and GIGADuck (Norsat 8115) are represented in
+the  fig.~\ref{fig:normalizedgain}  and  the  effective  bandwidth  is
+computed according:
+\begin{equation}
+  \rm \Delta \nu = \frac{1}{G_{max}} \int G(f) \cdot df
+\end{equation}
+We  obtain effective bandwidths  of \unit[437  $\rm \pm$  30]{MHz} and
+\unit[445 $\rm \pm$ 56]{MHz} for the GI301 and the DMX241 respectively
+and \unit[750]{MHz} for the Norsat.
+\begin{figure}[!ht]
+  \centering
+  \hspace*{-3ex}
+ \subfigure{\includegraphics[width=0.49\linewidth]{spectra3.png}}
+  \caption{Normalized  gain  of the  three  mentioned  LNBf after  the
+    frequency downconversion.  The thick blue and green  lines are the
+    average over several detectors. Only one measurement was performed
+    with the Norsat LNBf (in red). }
+  \label{fig:normalizedgain}
+\end{figure}
+
+
+\subsection{Adaptation electronics calibration}
+\label{sec:elec}
+\subsubsection{Specification}
+The adaptation electronics starts with the power detector and ends the
+analog to digital converter of the Auger SD.  The power detector is an
+Analog Device AD8318 (in the encapsuled version Minicircuits ZX47-50),
+it is  a logarithmic  amplifier with a  wide bandwith and  large power
+dynamic  range.   The  output  voltage  is  filtered  with  an  output
+capacitor for the first seven detectors, but the capacitor was removed
+for  the  flollowing  version   EASIER61  and  GIGADuck.  The  initial
+conversion factor of the power detector is:
+\begin{equation}
+  \rm  A [V] =  -0.0234\cdot P [dBm] + offset
+\label{eq:eqpd}
+\end{equation}
+ The  power detector  voltage is  then amplified  by a  factor  4.2 to
+ obtain  a final  power dynamics  of \unit[20]{dB}  over the  1024 ADC
+ counts of the  SD acquisition. The overall conversion  from the input
+ power to the ADC is:
+\begin{equation}
+  \rm ADC = 50.2\cdot P [dBm] + offset
+\label{eq:eqcalibration}
+\end{equation}
+The offset is designed to be adjustable to make up for the differences
+of the detectors gain.
+
+\subsubsection{Frequency response and electronics simulation}
+In  the  following  paragraphs  we  study the  time  response  of  the
+adaptation  electronics. 
+\paragraph{power detector calibration}
+To understand better  the power detector, we set  a detection chain in
+laboratory composed  of a C-band LNB  followed by a  power detector. A
+fast oscilloscope is  used to record simultaneously the  LNB and power
+detector's  output. We  used the  spark  of an  electronic lighter  to
+produce broadband  signal and emulate  the signal from an  air shower.
+With these calibration data we  find that the power detector output is
+well reproduced when one perform  a convolution of the input signal in
+dBm (logarithmic unit) with an exponential function:
+\begin{equation}
+  \rm V_{PD}(t) = k_{1}\cdot \int_{t>0}P_{dBm}(u)exp(\frac{t-u}{\tau})du + k_{2}
+  \label{eq:convolution}
+\end{equation}
+We   fix    $\rm   k_{1}$   to   the   conversion    factor   of   the
+equation~\ref{eq:eqpd}  and  we  find  $\rm \tau$  by  minimizing  the
+distance $\rm d = \Sigma (V_{measured} - V_{simulated})^2$ between the
+two  waveforms.  An  example  of the  recorded  data is  shown in  the
+fig.~\ref{fig:powerdetsim}  in   blue  and  the   resulting  simulated
+waveform is shown  in red.  We find an integration  time $\rm \tau$ of
+$\rm \tau_{capa}  = \unit[41.5]{ns}$ when an  output capacitor follows
+the power detector and $\rm \tau_{nocapa} = \unit[6.3]{ns}$ without.
+\begin{figure}[!ht]
+ \centering
+ \hspace*{-3ex}
+ \subfigure{\includegraphics[width=0.7\linewidth]{capa_method3.png}}
+ \caption{Example  of RF  and power  detector waveforms.  The measured
+   waveforms are in blue and the simulated one in red. The lower panel
+   show the difference.}
+ \label{fig:powerdetsim}
+\end{figure}
+\paragraph{EASIER board}
+The response of  the EASIER board is found with  the same technique as
+in the  previous paragraph.  We  recorded simultaneously the  input of
+the  board and  its  output. Here,  we  find the  board's response  by
+measuring the its transfer function in the frequency domain:
+\begin{equation}
+  \rm \tilde{H}(f) = \frac{\tilde{V}_{out}(f)}{\tilde{V}_{in}(f)}
+\end{equation}
+The  gain  $|H(f)|$   is  represented  in  the  figure~\ref{fig:board}
+together with  a gaussian fit used  to simulate the  board. \\The last
+part of  the chain, the Auger front  end is simulated with  a low pass
+filter with $\rm f_{cut} = \unit[20]{MHz}$ and by sampling in time and
+amplitude.
+\begin{figure}[!ht]
+ \centering
+ \hspace*{-3ex}
+ \subfigure{\includegraphics[width=0.49\linewidth]{fitspecboard2.png}}
+ \subfigure{\includegraphics[width=0.49\linewidth]{fitphaseboard.png}}
+ \caption{}
+ \label{fig:board}
+\end{figure}
+
+\paragraph{validation with data}
+In order to  validate the calibration and simulation,  we compare them
+with the  actual radio waveform  we record in  the Auger data.   An RF
+waveform   is  generated   from   the  spectra   represented  in   the
+figure~\ref{fig:normalizedgain}   by  inverse  FFT.    The  adaptation
+electronics simulation  is then applied to  it in order  to produce an
+trace    in   ADC    count.     We   can    now    compare   in    the
+figure~\ref{fig:distcomparison} the distribution  of the noise for the
+data (in grey)  and the simulation (in red).  The comparison are shown
+for the three setups.
+\begin{figure}[!ht]
+ \centering
+ \hspace*{-3ex}
+ \subfigure{\includegraphics[width=0.32\linewidth]{m3_distdatasimEA7.png}}
+ \subfigure{\includegraphics[width=0.32\linewidth]{m3_distdatasimEA61.png}}
+ \subfigure{\includegraphics[width=0.32\linewidth]{m3_distdatasimGD.png}}
+ \caption{}
+ \label{fig:distcomparison}
+\end{figure}
+If the simulations agree very well for EASIER61 and GIGADuck, it tends
+to overestimate the noise fluctuation for the first setup. However the
+measured and simulated standard  deviation of the distributions differ
+ at maximum by 15 ADC counts which represent \unit[0.3]{dB} or 7\%.
+
+%% The  sensitivity of  a radio  detector can  be defined  with  two main
+%% quantities:  the   antenna  effective   area  and  the   system  noise
+%% temperature.   The effective  area  measures the  portion of  incoming
+%% electro magnetic flux actually collected by the antenna, it is related
+%% to  the gain  of the  antenna  and depends  on the  frequency and  the
+%% observation angle.  The  system noise temperature is a  measure of all
+%% the  contributions  of noise,  including  the  antenna  noise and  the
+%% amplification noise. The time averaged power received is:
+%% \begin{equation}
+%%   P_{N}  = k_{B}T_{sys}\Delta \nu G_{sys}
+%% \end{equation}
+%% where k$_{B}$  is the Boltzmann  constant, $\Delta \nu$  the frequency
+%% bandwidth  and $G_{sys}$  the system  gain (antenna  and amplification
+%% chain).  Furthermore,  for a square  law detector like EASIER  we have
+%% the  following  relation  between  the  average power  and  the  noise
+%% distribution:
+%% \begin{equation}
+%%   \sigma_{N} = \frac{P_{N}}{\sqrt{\Delta \nu\cdot \Delta t}}
+%% \end{equation} 
+%% $\Delta t$ is the integration time $\tau$ of the system for signals of
+%% the order or  shorter than $\tau$, it can be taken  as the duration of
+%% the  expected signal otherwise.   \\One can  then compute  the minimum
+%% flux to obtain a signal equal to the noise fluctuations with:
+%% \begin{equation}
+%% \rm F  = \frac{k_{B}\cdot T_{sys}  }{A_{eff}\cdot \sqrt{\Delta  \nu \Delta
+%%     t}}
+%% \label{eq:sensitivity}
+%% \end{equation}
+
+%% \subsection{Antenna effective area and temperature}
+%% A horn type of antenna was chosen  for their large field of view and a
+%% flat gain in frequency. The  full simulation of the horn including the
+%% protecting  radome was carried  out with  HFSS software  and confirmed
+%% these          characteristics           as          shown          in
+%% fig.~\ref{fig:aeff}(left)(\textcolor{red}{find  a  better picture  and
+%%   simulated gain  plot}).  In addition,  the gain of one  horn antenna
+%% (ESX241)  was   measured  in  anechoic  chamber   at  IMEP  laboratory
+%% (Grenoble) at frequencies from \unit[3.4 to 4.2]{GHz}.  The beam width
+%% at \unit[-3]{dB} is around  \unit[45]{$^{\circ}$} and the average gain
+%% at boresight is  found to be \unit[8.75]{dBi}. The  backlobe gain were
+%% found to be lower than the maximum gain by \unit[20]{dB}.  The angular
+%% effective area is  derived from the equation $A_{eff}  = \frac{G \cdot
+%%   c^{2}}{4\pi \nu^{2}}$ and  shown in fig.~\ref{fig:aeff}(right) is of
+%% the order  of \unit[3.5$\cdot 10^{-3}$]{$m^{2}$} at the  middle of the
+%% band.
+
+%% \subsection{System gain}
+
+%% \subsection{Noise temperature}
+%% \paragraph{Antenna noise temperature} 
+%% The thermal noise collected by the antenna is estimated by integration
+%% of  the brightness  temperature profile  over the  whole  solid angle,
+%% weighted by the antenna gain.
+%% \begin{equation}
+%%   T_{ant} = \frac{1}{4\pi \Delta\nu}\int_{3.8 GHz}^{4.2 GHz}\int_{4\pi} T_{B}(\Omega)A_{eff}(\Omega,\nu)d\nu d\Omega
+%% \end{equation}
+%%  The     brightness    temperature    is     of    the     order    of
+%%  \unit[4]{K}  for  angle  where the  antenna
+%%  gain is maximum (towards the  sky) and is the physical temperature of
+%%  the ground,  $\simeq$ \unit[300]{K}, where the gain  is minimum.  The
+%%  temperature     profile    at     \unit[2.295]{GHz}     taken    from
+%%  \cite{otoshidanslacolle} is used and yields an antenna temperature of
+%%  \unit[7.5]{K}.
+%% \begin{figure}[!t]
+%%   \centering
+%%   \hspace*{-3ex}  
+%%   \subfigure{\includegraphics[width=0.40\linewidth]{simantenna.pdf}}  
+%%   \subfigure{\includegraphics[width=0.55\linewidth]{aeff.pdf}}  
+%%   \caption{Left: Antenna CAD model and resulting gain.  Right:Measured
+%%     effective area, between 3.4 and 4.2 GHz.}
+%%   \label{fig:aeff}  
+%% \end{figure}
+
+%% \paragraph{amplification temperature}
+%% The RF electronics line composed by the LNB, the impedance adapter and
+%% the cable is taken as a whole.   Note that given the very high gain of
+%% the first stage  of amplification, the noise induced  of the following
+%% device  will  be negligible.   The  gain  ($G_{elec}$)  and the  noise
+%% temperature  ($T_{elec}$) are  calculated  by the  so called  hot/cold
+%% method.  In this  calibration  technique the  RF  system is  subjected
+%% alternatively to high and  low power (or temperature). The temperature
+%% of the device under test is simply expressed as:
+%% \begin{equation}
+%%   T_{DUT} = \frac{T_{hot} - Y\cdot T_{cold}}{Y-1}
+%% \end{equation}
+%% with  $\rm   Y  $  the  ratio   of  the  measured  power:   $\rm  Y  =
+%% P_{hot}/P_{cold}$.\\ This method was applied to power spectra taken at
+%% room  temperature, i.e.  with  a uniform  antenna temperature  of $\rm
+%% \unit[T_{hot} = 300]{K}$, compared  to spectrum measured on site, i.e.
+%% at $\rm  \unit[T_{cold} =  7.5]{K}$. The measurement  was made  for 28
+%% systems of the  second setup, the temperature ranges  from \unit[19 to
+%%   29]{K}.\\The  temperature  parameter  is  crucial and  difficult  to
+%% measure because  of the  high gain of  the amplifier. The  other group
+%% already  mentionned (AMBER,  CROME  and MIDAS)  used  similar type  of
+%% antenna  and  measured  as  well  their  noise  temperature.   With  a
+%% dedicated   cryogenic  setup\cite{crome},   the   CROME  collaboration
+%% measured the  noise temperature of  LNBF GI301SC and ESX241.   For the
+%% LNBF GI301SC,  the temperature measured  was really unstable  and they
+%% found a mean  temperature of 91K but ranging from  40K to 180K. ESX241
+%% LNBF were  more stable and a  LNB temperature of around  25K was found
+%% and is compatible with the 23K found with room/sky spectrum comparison
+%% presented before.  An absolute calibration of the LNBF ESX241 was also
+%% performed  by the  MIDAS  collaboration measuring  the  sun flux,  and
+%% yielded a temperature of  \unit[20]{K}.\\ In the following, the system
+%% temperature  is   assumed  different  for   the  two  setups:   $  \rm
+%% \unit[T_{sys1} =  30]{K}$ and $  \rm \unit[T_{sys2} =  187]{K}$. 
+
+%% These
+%% number  are realistic  for the  first  one, and  conservative for  the
+%% second.
+
+%% \subsection{Detector sensitivity}
+%% The microwave power signal $P_{EAS}$ expected for an incoming flux $F$
+%% from   the  EAS   is \begin{equation}  P_{EAS}   =  F_{EAS}\cdot
+%%   A_{eff}(\theta,\phi)\cdot G_{elec}\cdot \Delta \nu
+%% \end{equation}
+%% where  $G_{elec}$  denotes for  the  electronics  gain, $A_{eff}$  the
+%% effective  area  of  the  antenna  and  $\Delta  \nu$  the  bandwidth.
+%% \textcolor{red}{here  in  principle  we  have to  integrate  over  the
+%%   frequency because the effective area depends on the frequency (in my
+%%   thesis,  it was  done with  the middle  frequency  (3.8GHz)).} \\The
+%% power  of  noise is  usually  expressed  thanks  to the  system  noise
+%% temperature,  these  two quantities  are  related  with the  Boltzmann
+%% constant  and the electronics  gain via:  $P_{N} =  k_{B}\cdot T_{sys}
+%% \cdot  G_{elec} \cdot  \Delta  \nu$.   In the  C-band  the only  noise
+%% contributions come from the thermal radiation collected by the antenna
+%% from  the surrounding  material ($T_{ant}$)  and the  electronic noise
+%% from the amplification ($T_{elec}$).   Moreover, in the case of EASIER
+%% and  more generally  for a  gaussian noise  measured by  a  square law
+%% detectors, the standard deviation of  the power is related to its mean
+%% via:
+%% \begin{equation}
+%%   \sigma_{N} = \frac{P_{N}}{\sqrt{\Delta \nu \Delta t}}
+%% \end{equation}
+%% where $\Delta  \nu$ is the bandwidth  and $\Delta t$ the  time on which
+%% the signal  can be integrated.\\Hence, a  figure of merit  is given by
+%% the flux inducing a power equal to the noise standard deviation:
+%% \begin{equation}
+%%   \frac{P_{EAS}}{\sigma_{N}} = 1 \rightarrow F = \frac{k_{B}\cdot T_{sys} }{A_{eff}\cdot \sqrt{\Delta \nu \Delta t}}
+%% \end{equation}
+%% The minimal detectable flux for is 
+
+%% \subsection{Adatation electronics calibration}
+%% The role of the EASIER electronics  is to convert the RF signal into a
+%% signal adapted to  the Auger SD front end  Analog to Digital Converter
+%% (ADC).  %% It is performed firstly  by a wide band logarithmic amplifier,
+%% %% the  power  detector Minicircuit  AD8318.   The  output  of the  power
+%% %% detector is a voltage proportional to  the input RF power in dBm ($\rm
+%% %% 0dBm = 10log_{10}(\frac{P}{1mW}) $).  This output is then amplified in
+%% %% order to fi
+%% \paragraph{calibration}
+%% The RF  power is integrated  by the logarithmic  amplifier minicircuit
+%% AD8318. It is a cascade amplifier outputing a voltage proportional the
+%% logarithm of the input RF  power.  It is associated with an adaptation
+%% board  which scales the  voltage to  obtain a  final dynamic  range of
+%% \unit[20]{dB}.  An offset voltage can  be adjusted to set the baseline
+%% at the desired  level.  Each electronic unit was  calibrated prior its
+%% installation in laboratory  and the offset was ajusted  on site during
+%% the installation.  The average conversion factor from the power in dBm
+%% to the output voltage is  \unit[0.1]{V/dB} and is very stable from one
+%% unit to another (cf fig.~\ref{fig:calibadaptationelectronics}).
+%% \begin{figure}[!h]
+%%   \centering
+%%   \hspace*{-3ex}
+%%   \subfigure{\includegraphics[width=0.55\linewidth]{slopes}}
+%% %%  \subfigure{\includegraphics[width=0.45\linewidth]{powerdetnoise}}  
+%%   \caption{Calibration   of   61   adapation  electronics   units   in
+%%     laboratory, with a continuous sine wave at 1GHz.}
+%%   \label{fig:calibadaptationelectronics}  
+%% \end{figure}
+%% %% The response of the power detector was also studied different input
+%% %% waveform.  It showed  a shifted response in case  of an input noise
+%% %% waveform  (cf.   fig.~\ref{calibadaptationelectronics}) taken  into
+%% %% account in the final power conversion.
+%% Finally, after the digitization in the SD ADC, one  can deduce the RF
+%% power according:
+%% \begin{equation}
+%%   ADC = 51.2\cdot P [dBm] + offset
+%% \label{eq:eqcalibration}
+%% \end{equation}
+%% \paragraph{study of the impulse response}
+%% The detector  was studied  with continuous sine  wave in  the previous
+%% paragraph.   We  complete  this  calibration  with the  study  of  the
+%% response of  the adaptation electronics to short  impulses (ns scale).
+%% The  detection system  (antenna-RF line-power  detector) was  setup in
+%% laboratory, and  short broadband  radio impulses were  generated using
+%% the  spark  of  an   electronic  lighter.   The  signal  was  recorded
+%% simultaneously after the LNB and  after the power detector with a fast
+%% oscilloscope (5GS/s).  It was found that the power detector signal is
+%% well reproduced  by the  convolution of the  RF power waveform  in dBm
+%% with an exponential decay function:
+%% \begin{equation}
+%%   V_{PD}(t) = k_{1}\cdot \int_{t>0}P_{dBm}(u)exp(\frac{t-u}{\tau})du + k_{2}
+%% \end{equation}
+%% where $k_1$ and $k_2$ are simple linear scaling and $\tau$ is the time
+%% response  of  the power  detector.   The  agreement  between data  and
+%% electronics        simulation       can        be        seen       in
+%% fig.~\ref{fig:powerdetectorresponse}  and  is found  to  be less  than
+%% \unit[1]{dB}  (30\%)  even on  very  short  signals  of the  order  of
+%% \unit[10]{ns}.
+%% \begin{figure}[!h]
+%%   \centering
+%%   \hspace*{-3ex}  
+%%   \subfigure{\includegraphics[width=0.60\linewidth]{suptrace.png}}  
+%%   \caption{Study of  the impulse response  of the power  detector. The
+%%     input signal  (upper pannel) is produced by  an electronic lighter
+%%     spark and detected with the  EASIER antenna and recorded on a fast
+%%     oscilloscope.  The  middle panel shows  the response of  the power
+%%     detector recorded  (in black) and  simulated (in red).   The lower
+%%     pannel shows the difference between measured and simulated.}
+%%   \label{fig:powerdetectorresponse}  
+%% \end{figure}
+
+%% \subsection{Electronics temperature}
+
+%% \subsection{Flux estimation} 
+%% The  flux of  an incoming  signal can  be estimated  only  knowing the
+%% $T_{sys}$  and   $A_{eff}$.   If  one  express   the  measured  signal
+%% subtracted by  the its average  and divided by the  noise fluctuation,
+%% one obtain:
+%% \begin{equation}
+%%   p_{rel} = \frac{P_{tot}(t) - P_{N}}{\sigma_{N}} = \frac{F_{EAS}\cdot
+%%     A_{eff}(\theta, \phi)\cdot \Delta \nu \cdot G_{sys}}{\sigma_{N}}
+%%   \label{eq:prel}
+%% \end{equation}
+%% or:
+%% \begin{equation}
+%%   F_{EAS}        =        \frac{p_{rel}\cdot        k_{B}        \cdot
+%%     T_{sys}}{A_{eff}\sqrt{\Delta \nu\cdot \Delta t}}
+%% \end{equation}
+
+

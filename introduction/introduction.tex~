@@ -1,0 +1,198 @@
+\section*{Introduction}
+The  origin of  Ultra  High  Energy Cosmic  Rays  (Abjurer's) remains  an
+unsolved question.  The  interpretation of the fall off  at the end of
+the           observed           spectrum          (E           $\geq$
+\unit[5$\cdot10^{19}$]{rev})\cite{Fukushima:2013yea} in  term of source
+distribution and acceleration process depends strongly on the chemical
+composition of UHECR.\\ The  detection of UHECR requires large surface
+of collection (order of  \unit[1000]{km$^2$}) to compensate a very low
+flux at the  highest energies. UHECR are detected  through the cascade
+of particles they induce in  the atmosphere (Extensive Air Shower EAS)
+via two main techniques:
+\begin{itemize}
+\item  the  detection of  the shower  front at
+  ground  by  an  array  of  particle  detector  (with  a  spacing  of
+  \unit[1.5]{km} for the Pierre Auger Observatory for instance).
+\item  the observation  of the  fluorescence light  emitted  along the
+  shower development by the desexcitation of $N_2$ molecules.
+\end{itemize}
+The second  technique provides currently  the best information  on the
+mass  composition  via  the  measurement  of  the  maximum  of  shower
+development  (X$_{max}$) but  is operated  on a  limited  time (during
+clear   moonless   night   i.e.    $\sim$   10$\%$)   due   to   light
+background.\\   To  improve   the  primary   cosmic   ray  composition
+identification, recent developments focus  on a deeper exploitation of
+the surface  detector data to  extract mass sensitive  parameters (see
+for  instance  \cite{augermassasym,  augermassmpd})  and also  on  new
+detection  techniques.  The observation  of radio  waves (from  MHz to
+GHz)  from  EAS  is   one  these  techniques.   Firstly  proposed  and
+implemented in the 1960's  \cite{jelley65}, the radio detection of air
+shower is now  a well established technique and  is mostly implemented
+in    the   VHF    band~\cite{huegeradioreview}.     It   was    shown
+in~\cite{augerradio} that the observed radiation is mainly produced by
+the acceleration  of the  electrons of the  shower in  the geomagnetic
+field, and in a smaller portion by the moving charge excess (also know
+as Askaryan radiation).  However,  both of these radiations are beamed
+forward in the  Cherenkov cone ($\sim$ 1deg.  in  air) centered around
+the shower axis.  The resulting  imprint of the radio signal at ground
+level is generally observable up to a few hundred meters limiting this
+technique to densely instrumented  array therefore to primary energies
+of around \unit[$10^{18}]{eV}$.  \\In 2008, a beam experiment detected
+a signal  at microwave  frequencies (1.5-6GHz) upon  the passage  of a
+shower  of  charged particles  in  an anechoic  chamber~\cite{Gorham}.
+This signal was interpreted  as molecular bremsstrahlung radiation and
+its  intensity,  when extrapolated  to  air  shower  energy, could  be
+detected in air shower with rather simple radio-detector systems.  The
+MBR is produced by the acceleration of the ionization electrons in the
+field  of the  molecules  in  the atmosphere.   The  intensity of  the
+radiation is thus directly related with deposited energy by the shower
+along the  atmosphere.  The measurement  of the time evolution  of the
+radiation would allow one to determine the longitudinal development of
+the shower, and the total received  power to measure the energy of the
+primary particle.  Furthermore one expects  the intensity of MBR to be
+emitted isotropically  and decrease with  the distance squared  and to
+extend   further   than  the   previously   detected  radiation   like
+geosynchrotron or Askaryan radiation.\\ This results and the promising
+features  of  the MBR  led  to  the  development of  beam  experiments
+\cite{amy}, \cite{maybe}, as well as in situ experiments aiming at the
+direct  observation  from   air  showers  \cite{midas},  \cite{crome},
+\cite{amber}.  In parallel, improved  calculations of the MBR produced
+by  air  shower  \cite{imen2016}  have  shown that  the  intensity  is
+expected to  be lower by at  least two orders of  magnitude.\\ In this
+paper, we  present the developments  of radio detectors  integrated to
+the Pierre Auger Observatory  surface detector.  We details two setups
+aiming at the detection of MBR  in the C-band ($\rm [3.4 - 4.2] GHz$),
+one based on the optimistic  estimation and an improved version with a
+better sensitivity.
+
+%% As EASIER  is  fully  integrated  to the  Auger
+%% surface detector,  the targeted  cosmic ray energy  are above  the EeV
+%% ($\rm 1EeV = 1\cdot 10^{18} eV$).
+
+
+%% Several  experiments have tried to  confirm the intensity
+%% of  MBR,  either  in   laboratory  using  controled  beam  \cite{AMY},
+%% \cite{MAYBE} and also in situ experiments aiming at the observation of
+%% MBR from air shower  \cite{MIDAS}, \cite{CROME}, \cite{AMBER}. For the
+%% moment the results  of \cite{Gorham} could not be  reproduced and more
+%% recent  calculations have  shown  that the  expected  signal from  MBR
+%% should  be  expected with  an  intensity  around  a factor  ??   lower
+%% \cite{olivier}.    \\We  present  in   this  paper   the  instrumental
+%% developments of EASIER,  a project initiated in 2009,  that intends to
+%% measure  the MBR  from EAS  with a  radio detector  integrated  to the
+%% surface  detector of the  Pierre Auger  Observatory.  This  project is
+%% composed  of  two phases  reflecting  the  evolution  of the  expected
+%% intensity of the MBR.
+
+
+%% .
+%% \\We present  in this paper  the EASIER experiment (for  Extensive Air
+%% Shower Identification  using Electron Radiometer),  a radio experiment
+%% embedded in the  Auger surface detector.  It aims  at the detection in
+%% the  C-band  (\unit[3.4-4.2]{GHz})  of  the  MBR  from  the  secondary
+%% particles  of the  air  shower of  energy above  \unit[$10^{19}$]{eV}.
+%% \\The first part is dedicated  to the presentation of the experimental
+%% setup.   We  first  explain  the  general design  of  EASIER  and  its
+%% integration to  Auger SD, the  we detail in  a more technical  way its
+%% components.   In a  second part,  we present  the calibration  and the
+%% simulation  of   the  detector.   Observations  of   the  first  years
+%% (\textcolor{red}{to be defined}) of data  are exposed in section 3 and
+%% 4.   Section  3 describes  a  straightforward  signal  search and  the
+%% observation  of   radio  events  way  above  the   background  and  in
+%% coincidence  with EAS.   The origin  of such  signal is  discussed.  A
+%% further study, restricting the data  set to events at larges distances
+%% to shower axis larger establishes limits on a MBR isotropic signal and
+%% is then reported in section 4.
+ 
+
+%% In  2008, a beam  test experiment  measured the  radiation at
+%% microwave  frequencies of  an artificially  produced  electro magnetic
+%% shower. A clear signal was observed in coincidence with the shower and
+%% interpreted as  the bremstrahlung of the ionization  electron (few eV)
+%% in the field of  the surrounding molecules. The isotropic distribution
+%% of this  emission with the intensity measured  in laboratory, combined
+%% to  the transparency  of the  atmosphere at  these  frequencies, would
+%% allow the detection of EAS from several km with simple radio detector.
+%% This technique  would allow the observation of  the shower development
+%% with  a 100$\%$  duty cycle.\\  Several  efforts were  engaged in  the
+%% confirmation  and the characterization  of this  emission in  the last
+%% years.   
+
+
+%%  Ultra High Energy Cosmic Ray (UHECR)
+%% are  studied  extensively  by  large  observatories  for  the  last  3
+%% decades. The very end of the  measured spectrum show a drop off of the
+%% flux  above  \unit[5\cdot10^{19}]{eV}.  Such  a  cut  off is  actually
+%% expected from  the interaction of  UHECR along their way  from distant
+%% source -  supposedly extragalactic - to  the Earth, but  could also be
+%% explained by the extinction of source of sufficiant energy. A critical
+%% observable to  draw conclusion is  the composition.  A measure  of the
+%% composition  of   UHECR  is  crucial  to  set   constraints  on  these
+%% scenarios.\\  UHECR are  detected and  studied through  the  shower of
+%% particles  produced   by  the   interactions  in  cascade   along  the
+%% atmosphere.  The  current main  techniques of detection  either detect
+%% directly the particles in the shower front when it reaches the ground,
+%% the surface  detector, or measure the fluorescence  light emitted from
+%% the  desexcitation of $N_{2}$  molecules. The  first technique  can be
+%% operated with a 100$\%$ duty cycle,  and is sensitive to a part of the
+%% shower th of are used in  the detection and study of UHECR uses either
+%% the int
+
+
+%%   imilar type  of  cut off  is  expected  due to  the
+%% interaction of  UHECR with the  photon background along  their journey
+%% from  distant--   sources  to   the  Earth.   However,   the  spectral
+%% characteristics of the  cut off depend on the  mass composition of the
+%% UHECR, but also  it could be explain as the  maximum energy reached in
+%% the accelerator \todo{cite}.  The characteristics of this cut off
+
+%%  However, their  sites  of acceleration,
+%% supposedly extragalactic  has not yet  been spotted. The  discovery of
+%% UHECR source  could shed  some light on  the the  violent acceleration
+%% process they are produced
+
+
+%% still not clearly are studied extensively for the precious information
+%% they could bring on the understanding of the most
+
+%% Ultra high energy  cosmic rays ($E \geq 10^{18}  eV$) origin remains a
+%%  puzzle after their discovery more than 60 years ago by Pierre Auger et
+%% al.  In  the past decade,  the Pierre Auger Observatory  have observed
+%% UHECR  through the extensive  air shower  they produce  in atmosphere,
+%% thanks to hybrid detection combining a particle detector at ground and
+%% a fluorescence detector. The first detects the particles of the shower
+%% front at  ground and  has allowed for  the precise measurement  of the
+%% UHECR spectrum in particular the characterisation of the features like
+%% the ankle and a sharp cut above $\simeq 5\cdot10^{19} eV$.  The second
+%% measures  the fluorescence  light  emitted along  the  passage of  the
+%% shower front  through the  atmophere, and in  particular the  depth in
+%% atmosphere of  the shower maximum developpent strongly  related to the
+%% nature of  the primary  UHECR.  The operation  of this  last technique
+%% requires  a clear  moonless night  to  insure a  low light  background
+%% limiting the observation  time to 13\% and thus  the statistic at high
+%% energy.   The interpretation  of  the spectrum  features  in terms  of
+%% astrophysical scenarios  is however very dependent  of the compositon,
+%% thus  recents efforts  have  been made  in  either improving  analysis
+%% technique of the SD to  deduce more mass composition parameters, or to
+%% explore new  techniques of  observation.  The present  paper describes
+%% the implementation and  the first results of EASIER,  a radio detector
+%% embedded  into   the  Pierre  Auger  Observatory  SD   aiming  at  the
+%% observation with  a 100\%  duty cycle of  the air  shower longitudinal
+%% profile  through  the  measurement  of  the  radio  intensity  in  the
+%% C-band.\\ The  observation of radio  waves from the air  shower offers
+%% great possibilities.  First it  is related the electromagnetic content
+%% that carries  a direct information on the  shower development. Second,
+%% below 10GHz the atmosphere  is mainly transparent whatever the weather
+%% conditions,   offering   the  advantage   of   a   100\%  duty   cycle
+%% observation. The first  detection of radio from EAS  dates back to the
+%% early 1960's and lots of effort were carried out at that time(cite) at
+%% frequencies  from 1MHz  to 500  MHz.  Technical  difficulties  and the
+%% developement  of fluorescence  technique slowed  down the  research on
+%% that  topic.  Lately, many  experiments were  set up  and successfully
+%% characterized the  signal emitted at  VHF frequencies(cite).  However,
+%% at  these  frequencies,  the  main  emission is  concentrated  at  the
+%% Cherenkov  angle ($\simeq$ 1deg.   in air)  limiting the  footprint at
+%% ground to a few  hundred meters, unfortunately unsufficiant to operate
+%% realistically  large   arrays  required  for   UHECR  detection.\\  
+
+% LocalWords:  UHECR

@@ -1,0 +1,150 @@
+\documentclass[twoside, final, 11pt]{articleMine}
+\usepackage[english]{babel} \usepackage{a4wide}
+\usepackage{amsmath,amssymb,accents} \usepackage{epsfig}
+\usepackage{subfigure} \usepackage{units} \usepackage{graphicx}
+\usepackage[displaymath, mathlines, right]{lineno} \usepackage{xspace}
+\usepackage{color} \usepackage{epic,eepic,pstricks}
+\usepackage{acronym} \usepackage{wrapfig,multicol}
+\usepackage{deluxetable} \usepackage{todonotes} 
+\usepackage{multirow}
+\usepackage{url}
+%\usepackage{slashbox}
+\usepackage{lmodern} 
+%\usepackage{caption}
+\linenumbers
+%\usepackage{showlabels}
+\usepackage[draft]{showkeys}
+
+%\usepackage[nolists, tablesfirst]{endfloat}
+\graphicspath{{plots/}}
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+  \renewenvironment{#1}%
+     {\linenomath\csname old#1\endcsname}%
+     {\csname oldend#1\endcsname\endlinenomath}}%
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+  \patchAmsMathEnvironmentForLineno{#1}%
+  \patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+%\AtBeginFigures{\cleardoublepage}
+%%%%%\parindent 5pt  
+\parskip 1.2pt           % sets spacing between paragraphs
+\def\Offline{\mbox{$\overline{\rm
+Off}$\hspace{.05em}\raisebox{.4ex}{$\underline{\rm line}$}}\xspace}
+\def\OfflineB{\mbox{$\bf\overline{\rm\bf
+Off}$\hspace{.05em}\raisebox{.4ex}{$\bf\underline{\rm\bf line}$}}\xspace}
+
+\def\eq#1{\begin{equation}#1\end{equation}}
+%\def\al#1{\begin{align}#1\end{align}}
+%\def\vc#1{{\bf #1}}
+\def\pt#1{\accentset{\rightharpoonup}{#1}}
+\include{myabbr}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\VEM}{\mbox{VEM}}
+\newcommand{\m}{\mbox{m}}
+
+\let\stdsection\section  
+%\renewcommand\section{\newpage\stdsection}  
+ 
+\begin{document}
+
+%\setpagewiselinenumbers
+\modulolinenumbers[2]
+
+%\linenumbers
+
+
+\renewcommand\linenumberfont{\small\rmfamily}
+\begin{center}
+  \vspace*{-13ex}
+
+  \rule{\linewidth}{0.1mm} \\[17mm] {\huge  EASIER}
+     \begin{flushright}
+       \small 
+     
+     \end{flushright}
+
+  % 
+\end{center}
+% 
+\vspace*{2ex} 
+%
+\thispagestyle{empty}
+\noindent
+\begin{abstract}
+  \noindent
+
+We present the instrumental development of EASIER, a radio detector of
+cosmic ray, tuned  in the C-band (3.4-4.2 GHz) and  integrated into the
+surface detector  of the Pierre  Auger Observatory. EASIER  intends to
+observe the  Molecular Bremsstrahlung  Radiation (MBR) produced  by the
+ionization electrons of the air shower  and in this way to measure its
+longitudinal profile  with a full  duty cycle. Current  measurement of
+the electromagnetic component lack of statistics at the highest energy
+either due to reduced duty  cycle, fluorescence measurement, or due to
+a  limited  spatial  extension  of  the signal,  beamed  component  of
+radio. We developed  a radio detector in the  C-band working in slave
+mode with the  Pierre Auger Observatory to probe  the intensity of the
+MBR.  Two setups  were implemented following the evolution  of the MBR
+theoretical expectations.  We present  the details of these setups and
+their  calibrations   to  estimate  the  sensitivity   of  the  EASIER
+experiment.
+
+%% longitudinal profile  measurement make  use of the  fluorescence light
+%% and are  thus limited  to at  most 15\% of  duty cycle  while previous
+%% radio experiment measure a radio  signal beamed around the shower axis
+%% thus not suited for a long distance
+%%  component  , a  mass  sensitive measurement  through.
+%% would  allow  for  the  measurement  of the  UHECR  mass  composition.
+%% Previous observation of an isotropic radiation from an electromagnetic
+%% shower in  laboratory experiment motivated  this study in  the C-band.
+%% We show in this paper two versions of the detector
+
+%%  The main purpose of
+%% EASIER is the observation of the longitudinal profile of extensive air
+%% shower at  microwave frequency.  Such observation would  allow for the
+%% measurement of the  nature of the primary cosmic  ray, a key parameter
+%% to pin point the physical  processes during their production and their
+%% propagation  in  universe.      \\We first describe  the design
+%% and  the instrumental characteristics  of EASIER.  We then  report the
+%% first  observations made  out of  the EASIER  data. In  particular, we
+%% report the  observation of  a clear signal  at microwave  frequency in
+%% coincidence  with the  detection of  air  shower by  the Auger  array.
+%% However the characteristics of  the observed signal, non isotropically
+%% emitted and concentrated within 300m from the shower axis, don't match
+%% the  expected  isotropic  emission.   Hence,  we  also  set  the  most
+%% constraining limits on MBR from extensive air shower.
+\end{abstract}
+
+%
+\thispagestyle{empty}
+%$\;$
+%\listoftodos
+%\newpage
+\noindent
+\include{introduction/introduction}
+\include{setup/setup}
+\include{calibration/calibration}
+\include{sensitivity/sensitivity}
+
+\addcontentsline{toc}{chapter}{Bibliography}                                 
+\bibliographystyle{atlasnote}
+\bibliography{easier}
+%% \newpage
+%% \begin{thebibliography}{9}
+%% \bibitem{gorham}P. W. Gorham et al., Phys. Rev. D 78, 032007 (2008).
+%%   [arXiv:0705.2589 [astro-ph]]
+%% \bibitem{augerpolar} The Pierre Auger Collaboration, Phys. Rev. D 89, 052002 (2014)
+%% \bibitem{crome}
+%% \end{thebibliography}
+
+\end{document}

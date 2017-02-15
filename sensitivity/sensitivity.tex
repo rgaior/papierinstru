@@ -1,0 +1,105 @@
+\section{Expected sensitivity}
+\label{simulation}
+ \subsection {End-to-end MBR simulation }
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  	Simulation of the emitted MBR is based on the model elaborated in~\cite{ALSAMARAI}. In this section, the simulation of the shower as well as the MBR emission and the propagation of the radiation until the detectors are presented. 
+  \subsection { MBR emission simulation }
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ In order to perform a fast simulation, a Gaisser-Hillas parametrization of longitudinal profiles of air showers was used as in \cite{PERRONE}. The number of charged particles at a certain depth $X$ can be retrieved from the following expression: 
+      	\begin{equation}
+  	N (X-X_1) =   N_{\mathrm{max}} \left(\frac{X-X_0}{X_{\mathrm{max}}-X_0}\right)^{\frac{X_{\mathrm{max}}-X_0}{\lambda}} \exp{\left(\frac{X_{\mathrm{max}}-X}{\lambda}\right)}, 
+ 	\end{equation}
+	where $X_1$ is the physical depth of the first interaction point, $N_{\mathrm{max}}$ is the maximum number of shower particles, and X$_{\mathrm{max}}$ is the atmospheric depth at shower maximum in g~cm$^{-2}$.
+Tabulated mean and RMS values of Gaisser-Hillas parameters for proton primaries were retrieved for different energies in $\log_{10}$($E$/eV) = [17.5, 21.0]. A linear interpolation in $\log_{10}$($E$/eV) provides the relevant parameters to be used as input values at any energy. For the parameters $X_0$, $N_{\mathrm{max}}$, $X_{\mathrm{max}}$, $\lambda$, randomization is performed using a gaussian distribution while for $X_1$, an exponential distribution is used.
+The energy of the shower is generated randomly following the energy spectrum in the region above the ankle, between 4$\times$10$^{18}$~eV and 3$\times$10$^{20}$~eV using a power law function as defined in~\cite{SCHULZ}: 
+	\begin{equation}
+	J(E; E > E_a) \frac{ E^{-\gamma_2} } {1+ \exp \left({ \frac{\log_{10}E - \log_{10}E_{1/2}}{\log_{10}W_c} }\right)},
+	\end{equation}
+	where the spectral index above the ankle $\gamma_2$ is 2.63. The term $\log_{10}E_{1/2}$ is the energy at which the flux has dropped to half of its peak value before suppression, and $\log_{10}W_c$, is its associated steepness, they are fixed to 19.63  and 0.15 respectively. 
+	
+	Shower cores are generated randomly inside a hexagon representing the fiducial area of a hexagonal array of 7 antennas. The axis of the shower is defined as random in azimuth $\phi$ and random in the cosine of the zenith $\theta$ limited to 60$^\circ$. 
+	Starting from the first interaction point high in the atmosphere, the number of primary electrons is calculated in grammage steps of $dX$ = 2.5 g~cm$^{-2}$ until it reaches the height level of the antenna. At each step, the mean energy deposit per particle E$_{\mathrm{dep}}$ is calculated following CORSIKA parameterization at 1 MeV as given in~\cite{NERLING}. 
+	
+	Assuming that ionization is the main process that these electrons undergo, the number of the resulting secondary electrons at each step in $X$ is calculated as:
+	\begin{equation}
+	N_{\mathrm{ioniz}} = \frac{E_{\mathrm{dep}}(X)~\rho(a(X,\theta))}{I_0 + \left\langle T_e \right\rangle},
+	\end{equation}
+	where $\rho(a(X,\theta))$ is the atmospheric density at a certain height in the atmosphere, and $I_0$ is the ionization potential (equivalent to 15.6~eV for N$_2$ and 12.1~eV for O$_2$ molecules). $\left\langle T_e \right\rangle$ stands for the mean kinetic energy of the secondary electrons, equivalent to 40~eV, as found in~\cite{ALSAMARAI}. At each step of the development of the shower in altitude, and for each emitter comprised in a thin disk of height d$a$ being within the Molière radius of the shower, the microwave power is: 
+	\begin {equation}
+	P_{\mathrm{MW}} = hc~\frac{N_A}{M}~\rho(a)~N^{\mathrm{tot}}_{\mathrm{ioniz}}~\tilde{\sigma}(t=0,a),
+	\end{equation} 
+	where $h$ is the Planck constant, $c$ is the speed of light, $N_A$ is the Avogadro number, $M$ is the dry air molar mass, and $N^{\mathrm{tot}}_{\mathrm{ioniz}}$ is the number of secondary electrons present in the thin disk of height $da$. The position of the emitter is randomly chosen in order to sample uniformly the azimuth $\psi$ around the shower axis and $r\times$ldf$(r,\psi)$, with $r$ the distance to the shower axis at the current altitude and ldf$(r,\psi)$ the NKG function. $\tilde{\sigma}(t=0,a)$ stands for the effective cross-section, proportional to the free-free interaction cross-section responsible of MBR emission. Its value is assigned to 1.7$\times$10$^{-28}$~m$^2$ at $t=0$ following the calculations found in \cite{ALSAMARAI}. Formally speaking, this cross-section is dependent on altitude. This dependence is negligible after reaching X$_{\mathrm{max}}$, thus, only a small number of interactions before X$_{\mathrm{max}}$ are neglected.
+	Once the power is calculated at the emission point, one can propagate the signal down to the detector. A model of the refractive index of the atmosphere is taken into account and is represented in Fig.~\ref{refIndex}. The refractive index is almost independent from the frequency considered, and manifests a small dependence with the height of the atmosphere. It has been verified that the influence of the variable refractive index on the amplitude and shape of the received signal is negligible.  
+
+%\begin{figure}[h]
+%\center{
+%\begin{minipage}[t]{0.47\linewidth}
+%\includegraphics[width=\textwidth]{./Fig/section_3/refr8index.eps}
+%\caption{\small{ Refractive index as a function of height. It is almost independent on frequency. Its dependence on the height is also small.}}
+%\label{refIndex}
+%\end{minipage}
+%\hspace{0.2cm}
+%\begin{minipage}[t]{0.47\linewidth}
+%\includegraphics[width=\textwidth]{./Fig/section_3/lifetime.eps}
+%\caption{\small{Electron lifetime as a function of height.}}
+%\label{lifetime}
+%\end{minipage}
+%}
+%\end{figure}   
+%		
+	The time structure of the emission from each point follows the time dependence of $\tilde{\sigma}$. Once the electron is attached, no MBR emission is anymore possible, so that the time profile is largely influenced by the attachment process to Oxygen and Nitrogen molecules. The characteristic time scale of attachment processes is shown in Figure \ref{lifetime}. However, other effects enter into the time structure of $\tilde{\sigma}$. An accurate parameterization of $\tilde{\sigma}$ turns out to be:
+	\begin{equation}
+	\tilde{\sigma}(t)= \mathrm{min}\left(\tilde{\sigma}_0,\frac{0.08~\tilde{\sigma}_0~(t/\mathrm{ns})^{-0.3}}{1+(t/\mathrm{ns})^{1.5}}\right).
+	\end{equation}
+
+	The received power at the detector is then calculated as: 
+	\begin{equation}
+	P_{\mathrm{rec}} = \frac{P_{\mathrm{MW}}}{4~\pi~R^2}~A_{\mathrm{eff}}~\Delta \nu,
+	\end{equation}
+	where $R$ is the distance from the emission point to the receiver, $A_{\mathrm{eff}}$ is the effective area of the antenna, and $\Delta \nu$ is the frequency bandwidth. 
+
+	The gain pattern of any type of antenna is obtained using \textit{HFSS}~\cite{HFSS}.
+	The effective area is calculated using the gain pattern of the antenna. The following expression holds for its calculation:  
+	\begin{equation}
+	A_{\mathrm{eff}}(\theta, \phi) = \frac{\lambda^2~G(\theta, \phi)}{4~\pi} 
+	\end{equation}
+	As previously mentioned, we aim at increasing the capability of the two modified antenna setups to detect MBR signals. To increase the number of showers which can be detected by the improved sensors set on one hexagon (7 stations), each peripheral antenna of the hexagon is directed towards the central antenna, which is kept vertical. It has been shown that the value of the tilt angle optimized to enhance the signal to noise ratio by being sensitive to further showers, while keeping the noise due to the ground temperature low is 20$^\circ$~\cite{Talk}.
+	For each event, on each antenna, time traces of 768 bins of 25~ns bin width are then filled by the expected power calculated above, considering the propagation and the expected time evolution of the emitted MBR photons as well as the attachment process responsible of the fading of the signal.
+
+  \subsection {Expected sensitivity}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	Following reference \cite{ALSAMARAI_YIELD}, it is convenient to express the sensitivity to MBR in terms of the yield. The yield quantity can be introduced in the calculation of the emitted power as:
+	\begin{equation}
+	\frac{d^2P}{d\nu da}(a) =Y \frac{\rho^2(a) }{\rho_0 }\left\langle\frac{dE}{dX}\right\rangle 
+ 	\end{equation}
+	The yield quantity is dimensionless, it represents the proportionality relating the energy radiated off by MBR to the deposited energy. It is thus an appropriate quantity to describe the MBR emission. In reference \cite{ALSAMARAI_YIELD}, this quantity is equivalent to 1$\times$10$^{-12}$  in the frame of the microscopic model. To probe the sensitivity of any setup to the MBR as a function of the intensity of the emission, the yield can be inserted in the expression of $P_{\mathrm{MW}}$ with the following substitution~\cite{ALSAMARAI_YIELD}: 
+\begin{equation}
+\frac{hcN_A\tilde{\sigma}(t=0)}{M(I_0+\left\langle T_e\right\rangle)} \rightarrow \frac{Y}{\rho_0}.
+\end{equation}
+
+	The sensitivity to a certain yield is calculated in terms of the number of expected events using a certain type of antenna. The number of expected events per year per equipped hexagon covering an area labeled $S$, is formulated as:
+	\begin{equation}
+	\mu(Y) = J_0\int_{>E_0}dE~f(E) \int_{\Delta \Omega}d\Omega~\cos{\theta}\int_{\Delta S}dS~\int_{\Delta T}dt~\epsilon(E,\theta,\Phi,x,y,Y),
+	\end{equation}
+	where $\epsilon$ is the detection efficiency depending on the yield, the position of the shower, and its incidence angle. To avoid comprehensive tabulations of the $\epsilon$ efficiency function, this expression is estimated by Monte-Carlo:
+\begin{equation}
+\mu(Y) \simeq \left(J_0\int_{>E_0}dE~f(E)\right)~\left(\int_{\Delta \Omega}d\Omega~\cos{\theta}\right)~\Delta S~\Delta T~\frac{1}{N_{\mathrm{sim}}} \sum_{i=1}^{N_{\mathrm{sim}}} f_i(E_i,\theta_i,\phi_i,x_i,y_i;Y),
+\end{equation}
+with $f_i=1$ if the signal is detectable according to some signal-to-noise criteria and $f_i=0$ otherwise. The random set of variables $\{E_i,\theta_i,\phi_i,x_i,y_i\}$  is already selected according to the measures of the integrals in front of the Monte-Carlo summation.
+A Monte-Carlo simulation of 10000 proton showers within the energy band [4$\times$10$^{18}$ eV$\ -\ 3 \times$10$^{20}$ eV] randomly hitting the fiducial area of a hexagon was thus performed for a hexagon equipped with DMX antennas, \textit{A-Info} antennas, and \textit{Helix} antennas. The result is shown in figure 7, where the scanned value on the abscissa axis is the yield quantity normalized to the theoretical one. It is found that the actual configuration of the EASIER detector is unable to detect MBR as predicted by the microscopic model. The main reason is that the EASIER detector was optimized to detect a yield which is $\sim$70 times higher than the one retrieved from the model, using the scaling law from beam measurements. The two other configurations enable an enhancement by a factor $\sim$10 at 3.8 GHz and a factor $\sim$100 at 1.2 GHz.
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=0.6\textwidth]{./Fig/section_3/sensitivity}
+%\label{fig:yieldy}
+%\caption{Number of expected events using the actual antenna array (EASIER), Helix antennas array (GigaDuck-1.2 GHz), A-Info antennas array (GigaDuck -3.8 GHz) for different values of the MBR yield.}
+%\end{figure}  	
+
+	While this optimization seems promising in particular using the \emph{Helix} antennas with $\sim$ 25 events/hexagon for one year of operation ($\sim$ 5 events/hexagon for one year using A-Info), in reality, the identification of an MBR event is still delicate. In contrast to a geosynchrotron emission or an Askaryan effect, which are possible emissions that could occur at GHz frequencies, the MBR emission is isotropic. This gives the possibility to identify it by requesting that the radiation is detected at large distances. A plausible cut would be thus performed on the number of stations that detected the event. By requesting at least 2 stations spaced on the regular array (1500 m spacing), one would discard emissions arising from geosynchrotron or Askarian effects (which expected signals expand over few hundred meters). Using the most sensitive antenna (\textit{Helix} at 1.2 GHz), the number of events after a cut on the SNR and the number of stations (quoted as channels in the figure) is shown in Fig.~\ref{fig:yildnormal}, in the case of the strict expectations from the microscopic model ($Y$=1) (left panel), and a yield value ten times higher than our calculations (right panel). Relying on the strict expectations from the microscopic model, and requesting that at least 2 antennas were sensitive to the signal using a loose cut on SNR (SNR>2), the new apparatus would be sensitive to only few events/hexagon in one year. Using the C-band antennas with this set of cuts, no events are expected. Thus, it seems very unlikely that an MBR event would be detected by more than one antenna due to the  faint signal and the large distances between the antennas. Still, in this configuration, the number of events falling in the fiducial area of the equipped hexagon that would be detected by one \textit{Helix} antenna with a SNR greater than 2 (7) is $\sim$25 ($\sim$15)/hexagon in one year. These performances motivated the deployment of the optimized sensors.
+	%This result suggests that one needs a denser array of antennas in order to use this criterium on the isotropy of the emission. %The infill array offers a denser grid, with detectors spaced by 750~m. Figure \ref{fig:yieldinfill} shows the expected number of events if the antennas were mounted on an hexagon of the infill array. Better prospects are found, with a number of events multiplied by a factor 4 when requesting a detection by more than one station and a SNR greater than 2. 
+
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=\textwidth]{./Fig/section_3/yildnormal}
+%\caption{Number of expected events using Helix antennas, after cuts on SNR and the minimum number of stations for a hexagon of the regular array (1500~m).}
+%\label{fig:yildnormal}
+%\end{figure}  
